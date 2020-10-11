@@ -8,7 +8,7 @@ package algorithm.leetcode;
  */
 
 public class DeleteDuplicates {
-    public ListNode deleteDuplicates(ListNode head) {
+    private ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -17,6 +17,18 @@ public class DeleteDuplicates {
         // 然后进行判断，需要注意是先递归再判断
         if (head.val == head.next.val) {
             head = head.next;
+        }
+        return head;
+    }
+
+    private ListNode deleteDuplicates2(ListNode head) {
+        ListNode p = head;
+        while (p != null && p.next != null) {
+            if (p.val == p.next.val) {
+                p.next = p.next.next;
+            } else {
+                p = p.next;
+            }
         }
         return head;
     }

@@ -14,7 +14,7 @@ import java.io.IOException;
  * @date 2020/10/26
  */
 @Slf4j
-public class Productor {
+public class Producer {
     public static void main(String[] args) {
         // 获取连接对象
         Connection connection = RabbitMqUtils.getConnection();

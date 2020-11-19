@@ -1,8 +1,6 @@
 package algorithm.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 树的遍历
@@ -18,22 +16,29 @@ public class TreeTraverse {
      * @param treeNode
      * @return
      */
-    private List<TreeNode> BFS(TreeNode treeNode) {
-        if (treeNode == null) {
-            return null;
-        }
-        List<TreeNode> treeNodeList = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(treeNode);
-        while (!stack.isEmpty()) {
-            TreeNode currentNode = stack.pop();
-            if (currentNode != null) {
-                treeNodeList.add(currentNode);
-                stack.push(currentNode.left);
-                stack.push(currentNode.right);
+    private List<List<Integer>> BFS(TreeNode treeNode) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        //记录某层具有多少个节点
+        int levelNum = 0;
+        Queue<TreeNode> treeQueue = new LinkedList<>();
+        treeQueue.add(treeNode);
+        while (!treeQueue.isEmpty()) {
+            levelNum = treeQueue.size();
+            List<Integer> levelList = new ArrayList<>();
+            while (levelNum > 0) {
+                TreeNode tempNode = treeQueue.poll();
+                if (tempNode != null) {
+                    levelList.add(tempNode.val);
+                    treeQueue.add(tempNode.left);
+                    treeQueue.add(tempNode.right);
+                }
+                levelNum--;
+            }
+            if (levelList.size() > 0) {
+                resultList.add(levelList);
             }
         }
-        return treeNodeList;
+        return resultList;
     }
 
     /**

@@ -16,26 +16,22 @@ public class TreeTraverse {
      * @param treeNode
      * @return
      */
-    private List<List<Integer>> BFS(TreeNode treeNode) {
-        List<List<Integer>> resultList = new ArrayList<>();
+    private List<TreeNode> BFS(TreeNode treeNode) {
+        List<TreeNode> resultList = new ArrayList<>();
         //记录某层具有多少个节点
         int levelNum = 0;
         Queue<TreeNode> treeQueue = new LinkedList<>();
         treeQueue.add(treeNode);
         while (!treeQueue.isEmpty()) {
             levelNum = treeQueue.size();
-            List<Integer> levelList = new ArrayList<>();
             while (levelNum > 0) {
                 TreeNode tempNode = treeQueue.poll();
                 if (tempNode != null) {
-                    levelList.add(tempNode.val);
+                    resultList.add(tempNode);
                     treeQueue.add(tempNode.left);
                     treeQueue.add(tempNode.right);
                 }
                 levelNum--;
-            }
-            if (levelList.size() > 0) {
-                resultList.add(levelList);
             }
         }
         return resultList;

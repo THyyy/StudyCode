@@ -1,7 +1,6 @@
 package basice.multithread;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.rmi.runtime.Log;
 
 /**
  * java 线程状态测试

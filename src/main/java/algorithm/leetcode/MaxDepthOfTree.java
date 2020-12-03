@@ -1,4 +1,4 @@
-package algorithm.leetcode.everyday;
+package algorithm.leetcode;
 
 /**
  * 树的最大深度

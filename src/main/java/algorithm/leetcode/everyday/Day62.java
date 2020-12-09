@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 每日一题——
+ * 每日一题——将数组拆分成斐波那契序列
  *
  * @author yuancome
  * @date 2020/12/8

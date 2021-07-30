@@ -1,6 +1,10 @@
 package algorithm.leetcode.theme.tree.dfs;
 
+import lombok.val;
+
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -25,6 +29,29 @@ public class BinaryTreeInorderTraversal {
         process(root.left, result);
         result.add(root.val);
         process(root.right, result);
+    }
+
+    /**
+     * 迭代实现
+     * 迭代算法必须开拓另一个空间进行节点存储
+     *
+     * @param root
+     * @return
+     */
+    private List<Integer> process2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Deque<TreeNode> nodeDeque = new ArrayDeque<>();
+
+        while (root != null && !nodeDeque.isEmpty()) {
+            while (root != null) {
+                nodeDeque.push(root);
+                root = root.left;
+            }
+            root = nodeDeque.pop();
+            result.add(root.val);
+            root = root.right;
+        }
+        return result;
     }
 
 
